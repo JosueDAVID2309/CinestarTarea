@@ -1,0 +1,26 @@
+﻿@Model cines
+@{
+    ViewData["Title"] = "verCines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h1>Nuestros Cines</h1>
+<br />
+
+@foreach (var item in Model)
+{
+    <div class="contenido-cine">
+        <img src="~/img/cine/@item.idCine.1.jpg" width="227" height="170" />
+        <div class="datos-cine">
+            <h4>@item.RazonSocial</h4><br />
+            <span>@item.Direccion - @item.Detalle<br /><br />@item.Telefonos</span>
+        </div>
+        <br />
+        <a href="@Url.Action("verCine", "Cine", new { idCine = @item.idCine })">
+            <img src="~/img/varios/ico-info2.png" width="150" height="40" />
+        </a>
+    </div>
+    
+}
+
+

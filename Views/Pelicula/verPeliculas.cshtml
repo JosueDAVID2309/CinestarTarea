@@ -1,0 +1,33 @@
+﻿@Model peliculas
+@{
+    ViewData["Title"] = "verPeliculas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1>Cartelera</h1>
+<br />
+<div class="contenido-pelicula">
+        @foreach(var items in Model)
+        {
+            <div class="datos-pelicula">
+                <h2>@items.Titulo</h2>
+        
+                <br />
+                <p>@items.Sinopsis</p>
+                <br />
+                <div class="boton-pelicula">
+                    <a href='@Url.Action("verPelicula", "Pelicula", new { id = @items.Id })'>
+                        <img src="~/img/varios/btn-mas-info.jpg" width="120" height="30" alt="Ver info" />
+                    </a>
+                </div>
+                <div class="boton-pelicula">
+                    <a href='@Url.Action("verPelicula", "Pelicula", new { idPelicula = 1 })' target=_blank onclick="return hs.htmlExpand(this, { objectType: 'iframe' } )">
+                        <img src="~/img/varios/btn-trailer.jpg" width="120" height="30" alt="Ver trailer" />
+                    </a>
+                </div>
+            </div>
+            <img src="~/img/pelicula/@(items.Id).jpg" width="160" height="226" /><br /><br />
+        }
+</div>
+
